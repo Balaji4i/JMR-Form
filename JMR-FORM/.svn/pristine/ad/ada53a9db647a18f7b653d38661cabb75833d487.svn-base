@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="AddEditJmrFormPageDef"
+                Package="fragment">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="XxsshrJmrFormVO" RangeSize="25" DataControl="Oando_AMDataControl" id="XxsshrJmrFormVOIterator"/>
+    <iterator id="XxsshrJmrFormVOIterator1" Binds="XxsshrJmrFormVO" DataControl="Oando_AMDataControl" RangeSize="25"/>
+    <iterator id="XxsshrJmrFormVO1Iterator" Binds="XxsshrJmrFormVO1" DataControl="Oando_AMDataControl" RangeSize="25"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="XxsshrJmrFormVOIterator" id="EmployeeName">
+      <AttrNames>
+        <Item Value="EmployeeName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrJmrFormVOIterator" id="Email_Trns">
+      <AttrNames>
+        <Item Value="Email_Trns"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrJmrFormVOIterator" id="Number_Trns">
+      <AttrNames>
+        <Item Value="Number_Trns"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrJmrFormVOIterator" id="Group_Trns">
+      <AttrNames>
+        <Item Value="Group_Trns"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrJmrFormVOIterator" id="Trans_AssignmentType">
+      <AttrNames>
+        <Item Value="Trans_AssignmentType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrJmrFormVOIterator" id="Cadre">
+      <AttrNames>
+        <Item Value="Cadre"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrJmrFormVOIterator" id="JmrFormId">
+      <AttrNames>
+        <Item Value="JmrFormId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrJmrFormVOIterator" id="JmrFormNo">
+      <AttrNames>
+        <Item Value="JmrFormNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrJmrFormVOIterator" id="TransactionDate">
+      <AttrNames>
+        <Item Value="TransactionDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrJmrFormVOIterator" id="DepartmentName">
+      <AttrNames>
+        <Item Value="DepartmentName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrJmrFormVOIterator" id="ApprovalStatus">
+      <AttrNames>
+        <Item Value="ApprovalStatus"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrJmrFormVOIterator" id="PreviousApprover">
+      <AttrNames>
+        <Item Value="PreviousApprover"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrJmrFormVOIterator" id="NextApprover">
+      <AttrNames>
+        <Item Value="NextApprover"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrJmrFormVOIterator" id="Comments">
+      <AttrNames>
+        <Item Value="Comments"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrJmrFormVOIterator" id="ApproverComments">
+      <AttrNames>
+        <Item Value="ApproverComments"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="XxsshrJmrFormVOIterator" StaticList="false" Uses="LOV_Duration" id="Duration"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="XxsshrJmrFormVOIterator" StaticList="false" Uses="LOV_MobilityType" id="MobilityType"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="XxsshrJmrFormVOIterator" id="ProposedStartDate">
+      <AttrNames>
+        <Item Value="ProposedStartDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrJmrFormVOIterator" id="ProposedEndDate">
+      <AttrNames>
+        <Item Value="ProposedEndDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrJmrFormVOIterator" id="LearningExpectations">
+      <AttrNames>
+        <Item Value="LearningExpectations"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrJmrFormVOIterator" id="ImpactOnJob">
+      <AttrNames>
+        <Item Value="ImpactOnJob"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrJmrFormVOIterator" id="LineManager">
+      <AttrNames>
+        <Item Value="LineManager"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="XxsshrJmrFormVOIterator" StaticList="false" Uses="LOV_Nominator" id="Nominator"/>
+    <action id="Commit" DataControl="Oando_AMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="Oando_AMDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <list IterBinding="XxsshrJmrFormVOIterator" StaticList="false" Uses="LOV_MobilityDepartment"
+          id="MobilityDepartment" DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="XxsshrJmrFormVOIterator" id="MobilityDeptManager">
+      <AttrNames>
+        <Item Value="MobilityDeptManager"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrJmrFormVOIterator" id="Position_Trns">
+      <AttrNames>
+        <Item Value="Position_Trns"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

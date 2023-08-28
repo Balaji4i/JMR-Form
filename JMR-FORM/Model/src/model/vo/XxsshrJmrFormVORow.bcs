@@ -1,0 +1,19 @@
+//Groovy Scripts for model.vo.XxsshrJmrFormVO
+
+package model.vo
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="TransactionDate")
+def TransactionDate_ExpressionScript_Expression()
+{
+adf.currentDate
+}
+
+
+@TransientValueExpression(attributeName="NominatorCount")
+def NominatorCount_ExpressionScript_Expression()
+{
+adf.object.XXPER_MANAGER_HRCY_R1.count("PersonId")
+}
+

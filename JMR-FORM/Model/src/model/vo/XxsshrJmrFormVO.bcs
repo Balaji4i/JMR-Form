@@ -1,0 +1,26 @@
+//Groovy Scripts for model.vo.XxsshrJmrFormVO
+
+package model.vo
+
+import oracle.jbo.script.annotation.AccessorParameterExpression;
+
+@AccessorParameterExpression(accessorName="Employee_View_ROVO", name="pPersonId")
+def pPersonId_Employee_View_ROVO_BindVariable_BoundParameter()
+{
+PersonId
+}
+
+
+@AccessorParameterExpression(accessorName="XXPER_MANAGER_HRCY_R1", name="ID")
+def ID_XXPER_MANAGER_HRCY_R1_BindVariable_BoundParameter()
+{
+PersonId
+}
+
+
+@AccessorParameterExpression(accessorName="XXPER_MANAGER_HRCY_R1", name="P_ID")
+def P_ID_XXPER_MANAGER_HRCY_R1_BindVariable_BoundParameter()
+{
+PersonId
+}
+

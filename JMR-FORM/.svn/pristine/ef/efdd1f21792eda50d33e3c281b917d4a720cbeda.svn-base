@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="searchJmrFormPageDef"
+                Package="fragment">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="XxsshrJmrFormVO" RangeSize="5" DataControl="Oando_AMDataControl" id="XxsshrJmrFormVOIterator"/>
+    <searchRegion Criteria="XxsshrJmrFormVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="XxsshrJmrFormVOIterator" id="XxsshrJmrFormVCQuery"/>
+  </executables>
+  <bindings>
+    <action id="Commit" DataControl="Oando_AMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action IterBinding="XxsshrJmrFormVOIterator" id="Delete" InstanceName="Oando_AMDataControl.XxsshrJmrFormVO"
+            DataControl="Oando_AMDataControl" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <methodAction id="getAssignmentType" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getAssignmentType"
+                  IsViewObjectMethod="false" DataControl="Oando_AMDataControl"
+                  InstanceName="bindings.getAssignmentType.dataControl.dataProvider"
+                  ReturnName="data.Oando_AMDataControl.methodResults.getAssignmentType_getAssignmentType_dataControl_dataProvider_getAssignmentType_result"/>
+    <attributeValues IterBinding="XxsshrJmrFormVOIterator" id="JmrFormId">
+      <AttrNames>
+        <Item Value="JmrFormId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxsshrJmrFormVOIterator" id="ApprovalStatus">
+      <AttrNames>
+        <Item Value="ApprovalStatus"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="XxsshrJmrFormVOIterator" id="XxsshrJmrFormVO">
+      <nodeDefinition DefName="model.vo.XxsshrJmrFormVO" Name="XxsshrJmrFormVO0">
+        <AttrNames>
+          <Item Value="JmrFormNo"/>
+          <Item Value="TransactionDate"/>
+          <Item Value="Nominator"/>
+          <Item Value="ApprovalStatus"/>
+          <Item Value="MobilityDepartment"/>
+          <Item Value="MobilityType"/>
+          <Item Value="ProposedStartDate"/>
+          <Item Value="ProposedEndDate"/>
+          <Item Value="Comments"/>
+          <Item Value="EmployeeName"/>
+          <Item Value="JmrFormId"/>
+          <Item Value="Cadre"/>
+          <Item Value="Position"/>
+          <Item Value="DepartmentName"/>
+          <Item Value="LineManager"/>
+          <Item Value="MobilityDeptManager"/>
+          <Item Value="LearningExpectations"/>
+          <Item Value="ImpactOnJob"/>
+          <Item Value="NextApprover"/>
+          <Item Value="ApproverComments"/>
+          <Item Value="PreviousApprover"/>
+          <Item Value="PayrollBatchName"/>
+          <Item Value="SoaFlowid"/>
+          <Item Value="ErrorMsg"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="LastUpdatedBy"/>
+          <Item Value="LastUpdateDate"/>
+          <Item Value="LastUpdateLogin"/>
+          <Item Value="Number_Trns"/>
+          <Item Value="Group_Trns"/>
+          <Item Value="Email_Trns"/>
+          <Item Value="Trans_AssignmentType"/>
+          <Item Value="PersonId"/>
+          <Item Value="BusinessUnitId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,40 @@
+//Groovy Scripts for model.eo.XxsshrJmrFormEO
+
+package model.eo
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="JmrFormId")
+def JmrFormId_ExpressionScript_Expression()
+{
+new oracle.jbo.server.SequenceImpl("XXSSHR_JMR_LETTER_S",adf.object.getDBTransaction()).getSequenceNumber()
+}
+
+
+@TransientValueExpression(attributeName="LastUpdatedBy")
+def LastUpdatedBy_ExpressionScript_Expression()
+{
+adf.context.sessionScope.userName
+}
+
+
+@TransientValueExpression(attributeName="LastUpdateLogin")
+def LastUpdateLogin_ExpressionScript_Expression()
+{
+adf.context.sessionScope.userName
+}
+
+
+@TransientValueExpression(attributeName="CreatedBy")
+def CreatedBy_ExpressionScript_Expression()
+{
+adf.context.sessionScope.userName
+}
+
+
+@TransientValueExpression(attributeName="JmrFormNo")
+def JmrFormNo_ExpressionScript_Expression()
+{
+JmrFormId
+}
+

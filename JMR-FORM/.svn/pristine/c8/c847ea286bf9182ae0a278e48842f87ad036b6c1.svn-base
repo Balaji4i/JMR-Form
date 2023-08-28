@@ -1,0 +1,331 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx" id="pt1">
+        <f:facet name="pageContents">
+            <af:panelGroupLayout layout="vertical" id="pgl2">
+                <af:panelHeader text="The Oando Job Mobility Request Form" id="ph1">                   
+                            <af:query id="qryId1" headerText="Search" disclosed="true"
+                                      value="#{bindings.XxsshrJmrFormVCQuery.queryDescriptor}"
+                                      model="#{bindings.XxsshrJmrFormVCQuery.queryModel}"
+                                      queryListener="#{bindings.XxsshrJmrFormVCQuery.processQuery}"
+                                      queryOperationListener="#{bindings.XxsshrJmrFormVCQuery.processQueryOperation}"
+                                      />
+                       
+                </af:panelHeader>
+               <af:panelBox id="pb1" showDisclosure="false" inlineStyle="border-color:transparent;">
+                    <f:facet name="toolbar"/>
+                    <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar">
+                            <af:toolbar id="t2" flex="1">
+                                <af:panelGroupLayout id="pgl1" layout="horizontal" halign="right">
+                                    <af:link id="cil3" icon="/images/func_add_16_ena.png"
+                                    disabledIcon="/images/func_add_16_dis.png" depressedIcon="/images/func_add_16_act.png"
+                                             hoverIcon="/images/func_add_16_hov.png" partialSubmit="true"
+                                             action="addEdit" rendered="#{sessionScope.assignmentType eq 'E'
+                                               || sessionScope.assignmentType eq 'ET' ? true : false}"
+                                            partialTriggers="resId1:b1">
+                                        <af:setPropertyListener from="#{'add'}" to="#{pageFlowScope.mode}"
+                                                                type="action"/>
+                                        <af:setPropertyListener from="#{null}" to="#{pageFlowScope.headerId}"
+                                                                type="action"/>                                                          
+                                    </af:link>
+                                    <af:spacer width="10" height="10" id="s1"/>
+                                    <af:link hoverIcon="/images/func_pencil_16_hov.png" action="addEdit"
+                                             depressedIcon="/images/func_pencil_16_act.png"
+                                             icon="/images/func_pencil_16_ena.png" partialSubmit="true"
+                                             disabledIcon="/images/func_pencil_16_dis.png" id="l2"
+                                              disabled="#{bindings.ApprovalStatus.inputValue eq ''
+                                               || bindings.ApprovalStatus.inputValue eq null
+                                               ? true : false}"
+                                             actionListener="#{backingBeanScope.SearchJMRForm.onClickEdit}">
+                                        <af:setPropertyListener from="#{'edit'}" to="#{pageFlowScope.mode}"
+                                                                type="action"/> 
+                                        <af:setPropertyListener from="#{bindings.JmrFormId.inputValue}"
+                                                                to="#{pageFlowScope.headerId}" type="action"/>
+                                    </af:link>
+                                    <af:spacer width="10" height="10" id="s2"/>
+                                    <af:link 
+                                             icon="/images/func_remove_16_ena.png" rendered="false"
+                                             hoverIcon="/images/func_remove_16_hov.png"
+                                             depressedIcon="/images/func_report_16_act.png"
+                                             disabledIcon="/images/func_remove_16_dis.png"  
+                                             partialSubmit="true" id="l3"></af:link>
+                                              <af:spacer width="10" height="10" id="s3"/>
+                                  <af:outputText rendered="false" value="#{sessionScope.assignmentType}" id="ot3"/> 
+                                  
+                                </af:panelGroupLayout>
+                            </af:toolbar>
+                        </f:facet>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{bindings.XxsshrJmrFormVO.collectionModel}" var="row"
+                                  rows="#{bindings.XxsshrJmrFormVO.rangeSize}"
+                                  emptyText="#{bindings.XxsshrJmrFormVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0" scrollPolicy="page"
+                                  selectedRowKeys="#{bindings.XxsshrJmrFormVO.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.XxsshrJmrFormVO.collectionModel.makeCurrent}"
+                                  rowSelection="single" fetchSize="#{bindings.XxsshrJmrFormVO.rangeSize}" id="resId1">
+                            <af:column align="center" width="100"
+                                       headerText="#{bindings.XxsshrJmrFormVO.hints.JmrFormNo.label}" id="resId1c1">
+                                <af:outputText value="#{row.JmrFormNo}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.JmrFormNo.tooltip}"
+                                               id="ot1"/>
+                            </af:column>
+                            <af:column align="center" width="100"
+                                       headerText="#{bindings.XxsshrJmrFormVO.hints.TransactionDate.label}"
+                                       id="resId1c3">
+                                <af:outputText value="#{row.TransactionDate}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.TransactionDate.tooltip}"
+                                               id="ot4"/>
+                            </af:column>
+                            <af:column align="center" width="240"
+                                       headerText="#{bindings.XxsshrJmrFormVO.hints.Nominator.label}" id="resId1c4">
+                                <af:outputText value="#{row.Nominator}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.Nominator.tooltip}"
+                                               id="ot5"/>
+                            </af:column>
+                            <af:column align="center" width="200"
+                                       headerText="#{bindings.XxsshrJmrFormVO.hints.ApprovalStatus.label}"
+                                       id="resId1c10">
+                                <af:outputText value="#{row.ApprovalStatus}"
+                                               inlineStyle="color:#{(row.ApprovalStatus eq 'APPROVED')?'green':(row.ApprovalStatus eq 'SUBMITTED FOR APPROVAL')?'orange':(row.ApprovalStatus eq 'DRAFT') ? 'black' : 'red'};"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.ApprovalStatus.tooltip}"
+                                               id="ot11"/>
+                            </af:column>
+                            <af:column rendered="true"
+                                       headerText="#{bindings.XxsshrJmrFormVO.hints.MobilityDepartment.label}"
+                                       id="resId1c11" width="150">
+                                <af:outputText value="#{row.MobilityDepartment}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.MobilityDepartment.tooltip}"
+                                               id="ot12"/>
+                            </af:column>
+                            <af:column rendered="true" headerText="#{bindings.XxsshrJmrFormVO.hints.MobilityType.label}"
+                                       id="resId1c13" width="150">
+                                <af:outputText value="#{row.MobilityType}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.MobilityType.tooltip}"
+                                               id="ot14"/>
+                            </af:column>
+                            <af:column rendered="true"
+                                       headerText="#{bindings.XxsshrJmrFormVO.hints.ProposedStartDate.label}"
+                                       id="resId1c14">
+                                <af:outputText value="#{row.ProposedStartDate}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.ProposedStartDate.tooltip}"
+                                               id="ot15">
+                                   <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                                </af:outputText>
+                            </af:column>
+                            <af:column rendered="true"
+                                       headerText="#{bindings.XxsshrJmrFormVO.hints.ProposedEndDate.label}"
+                                       id="resId1c15">
+                                <af:outputText value="#{row.ProposedEndDate}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.ProposedEndDate.tooltip}"
+                                               id="ot16">
+                                   <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                                </af:outputText>
+                            </af:column>
+                            <af:column align="center" width="200"
+                                       headerText="#{bindings.XxsshrJmrFormVO.hints.Comments.label}" id="resId1c18">
+                                <af:outputText value="#{row.Comments}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.Comments.tooltip}"
+                                               id="ot19"/>
+                            </af:column>
+                            <af:column headerText="Delete" align="center" width="150" id="c100">
+                                <af:button text="Delete" partialSubmit="true" id="b1"
+                                          disabled="#{row.ApprovalStatus ne 'DRAFT'}"
+                                           actionListener="#{backingBeanScope.SearchJMRForm.onClickDelete}"/>
+                            </af:column>
+                            <af:column rendered="false" align="center" width="200"
+                                       headerText="#{bindings.XxsshrJmrFormVO.hints.EmployeeName.label}" id="resId1c5">
+                                <af:outputText value="#{row.EmployeeName}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.EmployeeName.tooltip}"
+                                               id="ot6"/>
+                            </af:column>
+                            <af:column headerText="#{bindings.XxsshrJmrFormVO.hints.JmrFormId.label}" rendered="false"
+                                       id="resId1c2">
+                                <af:outputText value="#{row.JmrFormId}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.JmrFormId.tooltip}" id="ot2">
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.XxsshrJmrFormVO.hints.JmrFormId.format}"/>
+                                </af:outputText>
+                            </af:column>
+                            <af:column rendered="false" headerText="#{bindings.XxsshrJmrFormVO.hints.Cadre.label}"
+                                       id="resId1c6">
+                                <af:outputText value="#{row.Cadre}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.Cadre.tooltip}" id="ot7"/>
+                            </af:column>
+                            <af:column rendered="false" headerText="#{bindings.XxsshrJmrFormVO.hints.Position.label}"
+                                       id="resId1c7">
+                                <af:outputText value="#{row.Position}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.Position.tooltip}" id="ot8"/>
+                            </af:column>
+                            <af:column rendered="false"
+                                       headerText="#{bindings.XxsshrJmrFormVO.hints.DepartmentName.label}"
+                                       id="resId1c8">
+                                <af:outputText value="#{row.DepartmentName}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.DepartmentName.tooltip}"
+                                               id="ot9"/>
+                            </af:column>
+                            <af:column rendered="false" headerText="#{bindings.XxsshrJmrFormVO.hints.LineManager.label}"
+                                       id="resId1c9">
+                                <af:outputText value="#{row.LineManager}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.LineManager.tooltip}"
+                                               id="ot10"/>
+                            </af:column>
+                            <af:column rendered="false"
+                                       headerText="#{bindings.XxsshrJmrFormVO.hints.MobilityDeptManager.label}"
+                                       id="resId1c12">
+                                <af:outputText value="#{row.MobilityDeptManager}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.MobilityDeptManager.tooltip}"
+                                               id="ot13"/>
+                            </af:column>
+                            <af:column rendered="false"
+                                       headerText="#{bindings.XxsshrJmrFormVO.hints.LearningExpectations.label}"
+                                       id="resId1c16">
+                                <af:outputText value="#{row.LearningExpectations}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.LearningExpectations.tooltip}"
+                                               id="ot17"/>
+                            </af:column>
+                            <af:column rendered="false" headerText="#{bindings.XxsshrJmrFormVO.hints.ImpactOnJob.label}"
+                                       id="resId1c17">
+                                <af:outputText value="#{row.ImpactOnJob}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.ImpactOnJob.tooltip}"
+                                               id="ot18"/>
+                            </af:column>
+                            <af:column rendered="false"
+                                       headerText="#{bindings.XxsshrJmrFormVO.hints.NextApprover.label}" id="resId1c19">
+                                <af:outputText value="#{row.NextApprover}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.NextApprover.tooltip}"
+                                               id="ot20"/>
+                            </af:column>
+                            <af:column rendered="false"
+                                       headerText="#{bindings.XxsshrJmrFormVO.hints.ApproverComments.label}"
+                                       id="resId1c20">
+                                <af:outputText value="#{row.ApproverComments}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.ApproverComments.tooltip}"
+                                               id="ot21"/>
+                            </af:column>
+                            <af:column rendered="false"
+                                       headerText="#{bindings.XxsshrJmrFormVO.hints.PreviousApprover.label}"
+                                       id="resId1c21">
+                                <af:outputText value="#{row.PreviousApprover}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.PreviousApprover.tooltip}"
+                                               id="ot22"/>
+                            </af:column>
+                            <af:column rendered="false"
+                                       headerText="#{bindings.XxsshrJmrFormVO.hints.PayrollBatchName.label}"
+                                       id="resId1c22">
+                                <af:outputText value="#{row.PayrollBatchName}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.PayrollBatchName.tooltip}"
+                                               id="ot23"/>
+                            </af:column>
+                            <af:column rendered="false" headerText="#{bindings.XxsshrJmrFormVO.hints.SoaFlowid.label}"
+                                       id="resId1c23">
+                                <af:outputText value="#{row.SoaFlowid}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.SoaFlowid.tooltip}"
+                                               id="ot24">
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.XxsshrJmrFormVO.hints.SoaFlowid.format}"/>
+                                </af:outputText>
+                            </af:column>
+                            <af:column rendered="false" headerText="#{bindings.XxsshrJmrFormVO.hints.ErrorMsg.label}"
+                                       id="resId1c24">
+                                <af:outputText value="#{row.ErrorMsg}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.ErrorMsg.tooltip}"
+                                               id="ot25"/>
+                            </af:column>
+                            <af:column rendered="false" headerText="#{bindings.XxsshrJmrFormVO.hints.CreatedBy.label}"
+                                       id="resId1c25">
+                                <af:outputText value="#{row.CreatedBy}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.CreatedBy.tooltip}"
+                                               id="ot26"/>
+                            </af:column>
+                            <af:column rendered="false"
+                                       headerText="#{bindings.XxsshrJmrFormVO.hints.CreationDate.label}" id="resId1c26">
+                                <af:outputText value="#{row.CreationDate}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.CreationDate.tooltip}"
+                                               id="ot27">
+                                    <af:convertDateTime pattern="#{bindings.XxsshrJmrFormVO.hints.CreationDate.format}"/>
+                                </af:outputText>
+                            </af:column>
+                            <af:column rendered="false"
+                                       headerText="#{bindings.XxsshrJmrFormVO.hints.LastUpdatedBy.label}"
+                                       id="resId1c27">
+                                <af:outputText value="#{row.LastUpdatedBy}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.LastUpdatedBy.tooltip}"
+                                               id="ot28"/>
+                            </af:column>
+                            <af:column rendered="false"
+                                       headerText="#{bindings.XxsshrJmrFormVO.hints.LastUpdateDate.label}"
+                                       id="resId1c28">
+                                <af:outputText value="#{row.LastUpdateDate}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.LastUpdateDate.tooltip}"
+                                               id="ot29">
+                                    <af:convertDateTime pattern="#{bindings.XxsshrJmrFormVO.hints.LastUpdateDate.format}"/>
+                                </af:outputText>
+                            </af:column>
+                            <af:column rendered="false"
+                                       headerText="#{bindings.XxsshrJmrFormVO.hints.LastUpdateLogin.label}"
+                                       id="resId1c29">
+                                <af:outputText value="#{row.LastUpdateLogin}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.LastUpdateLogin.tooltip}"
+                                               id="ot30"/>
+                            </af:column>
+                            <af:column rendered="false" headerText="#{bindings.XxsshrJmrFormVO.hints.Number_Trns.label}"
+                                       id="resId1c30">
+                                <af:outputText value="#{row.Number_Trns}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.Number_Trns.tooltip}"
+                                               id="ot31"/>
+                            </af:column>
+                            <af:column rendered="false" headerText="#{bindings.XxsshrJmrFormVO.hints.Group_Trns.label}"
+                                       id="resId1c31">
+                                <af:outputText value="#{row.Group_Trns}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.Group_Trns.tooltip}"
+                                               id="ot32"/>
+                            </af:column>
+                            <af:column rendered="false" headerText="#{bindings.XxsshrJmrFormVO.hints.Email_Trns.label}"
+                                       id="resId1c32">
+                                <af:outputText value="#{row.Email_Trns}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.Email_Trns.tooltip}"
+                                               id="ot33"/>
+                            </af:column>
+                            <af:column rendered="false"
+                                       headerText="#{bindings.XxsshrJmrFormVO.hints.Trans_AssignmentType.label}"
+                                       id="resId1c33">
+                                <af:outputText value="#{row.Trans_AssignmentType}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.Trans_AssignmentType.tooltip}"
+                                               id="ot34"/>
+                            </af:column>
+                            <af:column rendered="false" headerText="#{bindings.XxsshrJmrFormVO.hints.PersonId.label}"
+                                       id="resId1c34">
+                                <af:outputText value="#{row.PersonId}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.PersonId.tooltip}" id="ot35">
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.XxsshrJmrFormVO.hints.PersonId.format}"/>
+                                </af:outputText>
+                            </af:column>
+                            <af:column rendered="false"
+                                       headerText="#{bindings.XxsshrJmrFormVO.hints.BusinessUnitId.label}"
+                                       id="resId1c35">
+                                <af:outputText value="#{row.BusinessUnitId}"
+                                               shortDesc="#{bindings.XxsshrJmrFormVO.hints.BusinessUnitId.tooltip}"
+                                               id="ot36">
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.XxsshrJmrFormVO.hints.BusinessUnitId.format}"/>
+                                </af:outputText>
+                            </af:column>
+                        </af:table>
+                    </af:panelCollection>
+                </af:panelBox>
+            </af:panelGroupLayout>
+        </f:facet>
+        <f:facet name="footerStart"/>
+        <f:facet name="footer"/>
+        <f:facet name="footerEnd"/>
+        <f:facet name="startPanel"/>
+        <f:facet name="endPanel"/>
+        <f:facet name="headerStart"/>
+        <f:facet name="header"/>
+        <f:facet name="headerEnd"/>
+    </af:pageTemplate>
+</jsp:root>
